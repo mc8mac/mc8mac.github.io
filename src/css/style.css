@@ -27,7 +27,7 @@ body{
 }
 
 #particles-js{
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
 }
@@ -37,7 +37,7 @@ body{
     top:0;
     left:0;
     width: 100%;
-    padding: 2rem 9%;
+    padding: 1rem 9%;
     display: flex;
     justify-content: space-between;
     align-items:center;
@@ -49,7 +49,6 @@ body{
     color: var(--text-color);
     font-weight: 600;
 }
-
 
 .navbar a{
     font-size: 1.7rem;
@@ -79,6 +78,7 @@ section{
 .home-content{
     max-width: 49rem;
     z-index: 1;
+    opacity: 100;
 }
 
 .home-content h1{
@@ -210,4 +210,10 @@ section{
 
 .home-social a:hover::before{
     width: 100%;
+}
+
+.about{
+    display: flex;
+    align-items: center;
+    padding: 9%;
 }

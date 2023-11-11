@@ -1,2 +1,4 @@
-# mcm-website
-Contains all the code for my personal website, hosted on Git
+# Marcos Machado's Personal Website
+Screenshots
+## Frameworks and Packages Used
+- [Particles-JS](https://github.com/VincentGarreau/particles.js)

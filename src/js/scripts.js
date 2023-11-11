@@ -3,7 +3,7 @@ var _CONTENT = [
 	"Software Developer.", 
 	"Student from Madeira Island.",
     "Passionate About Technology.",
-    "Learning Lover."
+    "I Love Chess."
 ];
 
 // Current sentence being processed

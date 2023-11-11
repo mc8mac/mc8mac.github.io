@@ -93,8 +93,7 @@ section{
     display: inline-block;
     font-size: 3.2rem;
     font-weight:700;
-    color: transparent;
-    -webkit-text-stroke: .1rem var(--main-color);
+    color: var(--main-color);
 }
 
 

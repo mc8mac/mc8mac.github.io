@@ -75,61 +75,69 @@ button.toggle-menu {
     background: transparent;
     border: none;
     z-index: 9;
+    font-size: 4rem;
+    color: #fff;
 }
 
-button.toggle-menu div {
-    width: 100%;
-    height: 2px;
-    background: white;
+button.untoggle-menu {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vh;
+    background: black;
+    opacity: 0.4;
+    z-index: 5;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 870px) {
     .navbar {
         position: fixed;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
+        align-items: left;
         width: 0;
         height: 100vh;
+        right:0;
         top: 0;
-        right: 0;
-        padding: 3.5rem 0;
-        gap: 2.4rem;
-        background: white;
-        transition: all .2s ease;
+        padding: 2rem 0;
+        gap: 1.5rem;
+        background: transparent;
+        transition: all .2s;
+        z-index: 8;
     }
 
     .navbar.show {
-        width: 100vw;
+        width: 40vw;
+        background:var(--main-color);
+    }
+    
+    .navbar a{
+        color: var(--bg-color);
+        font-size: 2rem;
+        margin-left: 1rem;
+        z-index: 10;
     }
 
-    .navbar a{
-        color: black;
+    .navbar a:hover{
+        color: var(--bg-color);
+        border-bottom: 1px solid var(--bg-color);
     }
 
     button.toggle-menu {
         display: flex;
     }
 
-    button.toggle-menu.active div {
-        position: absolute;
-        background: black;
-        width: 2.4rem;
-        transition: all .2s ease;
+    button.untoggle-menu.active {
+        display: block;
+        width: 100vw;
+        height: 100vh;
     }
 
-    button.toggle-menu.active div:first-child {
-        transform: rotate(45deg) translate(0, -50%);
-        top: 50%;
-    }
-    button.toggle-menu.active div:nth-child(2) {
+    button.toggle-menu.active  {
         display: none;
-    }
-    button.toggle-menu.active div:nth-child(3) {
-        transform: rotate(-45deg) translate(0, -50%);
-        top: 50%;
     }
 }
 

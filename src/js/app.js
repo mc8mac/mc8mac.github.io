@@ -86,8 +86,8 @@ particlesJS('particles-js',
       "detect_on": "canvas",
       "events": {
         "onhover": {
-          "enable": false,
-          "mode": "grab"
+          "enable": true,
+          "mode": "bubble"
         },
         "onclick": {
           "enable": true,
@@ -103,8 +103,8 @@ particlesJS('particles-js',
           }
         },
         "bubble": {
-          "distance": 400,
-          "size": 40,
+          "distance": 100,
+          "size": 10,
           "duration": 2,
           "opacity": 8,
           "speed": 3
@@ -138,13 +138,94 @@ particlesJS('particles-js',
 function toggleMenu() {
   var menu = document.querySelector('.navbar');
   var btn = document.querySelector('button.toggle-menu');
+  var btn1 = document.querySelector('button.untoggle-menu');
   menu.classList.toggle('show');
   btn.classList.toggle('active');
+  btn1.classList.toggle('active');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
   var toggleButton = document.querySelector('button.toggle-menu');
+  var untoggleButton = document.querySelector('button.untoggle-menu');
   if (toggleButton) {
     toggleButton.addEventListener('click', toggleMenu);
+  }
+  if (untoggleButton) {
+    untoggleButton.addEventListener('click', toggleMenu);
+  }
+});
+
+// DYNAMIC TEXT WRITING
+var _CONTENT = [ 
+	"Software Developer.", 
+	"Student from Madeira Island.",
+    "Passionate About Technology.",
+    "I Love Chess."
+];
+
+var _PART = 0;
+var _PART_INDEX = 0;
+var _INTERVAL_VAL;
+var _ELEMENT = document.querySelector("#text");
+
+function Type() { 
+	var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+	_ELEMENT.innerHTML = text;
+	_PART_INDEX++;
+
+	if(text === _CONTENT[_PART]) {
+		clearInterval(_INTERVAL_VAL);
+		setTimeout(function() {
+			_INTERVAL_VAL = setInterval(Delete, 50);
+		}, 1000);
+	}
+}
+
+function Delete() {
+	var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+	_ELEMENT.innerHTML = text;
+	_PART_INDEX--;
+
+	if(text === '') {
+		clearInterval(_INTERVAL_VAL);
+		if(_PART == (_CONTENT.length - 1))
+			_PART = 0;
+		else
+			_PART++;
+		
+		_PART_INDEX = 0;
+		setTimeout(function() {
+			_INTERVAL_VAL = setInterval(Type, 100);
+		}, 200);
+	}
+}
+_INTERVAL_VAL = setInterval(Type, 100);
+
+
+window.addEventListener('scroll', function() {
+  var headerBottom = document.querySelector('.header').getBoundingClientRect().bottom;
+  var content = [".home-", ".about-",".education-", ".portfolio-", ".contact-", ".skills-"];
+  for (var j = 0; j<content.length; j++){
+      var divContent = document.querySelector(content[j] + "content");
+      console.log(content[j] + "content");
+      var sectionElements = divContent.children;
+
+      for (var i = 0; i < sectionElements.length; i++) {
+          var elem = sectionElements[i];
+          var elemTop = elem.getBoundingClientRect().top;
+          var distance = elemTop - headerBottom;
+
+          if (distance <= 0) {
+              elem.style.opacity = 0;
+          } 
+          else if (distance < 75) {
+              // Calculate opacity based on element's position relative to the header
+              var opacity = (distance / 75);
+              elem.style.opacity = opacity;
+          }
+          else{
+              elem.style.opacity = 1;
+          }
+      }
   }
 });

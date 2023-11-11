@@ -64,6 +64,75 @@ body{
     border-bottom: 1px solid var(--main-color);
 }
 
+button.toggle-menu {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 32px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    z-index: 9;
+}
+
+button.toggle-menu div {
+    width: 100%;
+    height: 2px;
+    background: white;
+}
+
+@media only screen and (max-width: 767px) {
+    .navbar {
+        position: fixed;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 0;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        padding: 3.5rem 0;
+        gap: 2.4rem;
+        background: white;
+        transition: all .2s ease;
+    }
+
+    .navbar.show {
+        width: 100vw;
+    }
+
+    .navbar a{
+        color: black;
+    }
+
+    button.toggle-menu {
+        display: flex;
+    }
+
+    button.toggle-menu.active div {
+        position: absolute;
+        background: black;
+        width: 2.4rem;
+        transition: all .2s ease;
+    }
+
+    button.toggle-menu.active div:first-child {
+        transform: rotate(45deg) translate(0, -50%);
+        top: 50%;
+    }
+    button.toggle-menu.active div:nth-child(2) {
+        display: none;
+    }
+    button.toggle-menu.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(0, -50%);
+        top: 50%;
+    }
+}
+
 section{
     min-height: 100vh;
     padding: 10rem 9% 2rem;

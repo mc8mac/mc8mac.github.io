@@ -134,3 +134,17 @@ particlesJS('particles-js',
   }
 
 );
+
+function toggleMenu() {
+  var menu = document.querySelector('.navbar');
+  var btn = document.querySelector('button.toggle-menu');
+  menu.classList.toggle('show');
+  btn.classList.toggle('active');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  var toggleButton = document.querySelector('button.toggle-menu');
+  if (toggleButton) {
+    toggleButton.addEventListener('click', toggleMenu);
+  }
+});

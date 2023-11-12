@@ -59,6 +59,10 @@ body{
     transition:0.55s;
 }
 
+.blinder{
+    display: none;
+}
+
 .navbar a:hover{
     color: var(--main-color);
     border-bottom: 1px solid var(--main-color);
@@ -112,6 +116,29 @@ button.untoggle-menu {
     .navbar.show {
         width: 40vw;
         background:var(--main-color);
+    }
+
+    .blinder{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 0vw;
+        height: 100vh;
+        background: black;
+        opacity:0;
+        transition: all .4s;
+    }
+
+    .blinder.active {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        background: black;
+        opacity:0.5;
     }
     
     .navbar a{

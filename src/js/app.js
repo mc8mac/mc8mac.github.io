@@ -1,3 +1,112 @@
+
+document.addEventListener('DOMContentLoaded', function () {
+  var menu = document.querySelector('.navbar');
+  var toggleButton = document.querySelector('button.toggle-menu');
+  var blinder = document.querySelector('.blinder');
+
+  function toggleMenu() {
+    menu.classList.toggle('show');
+    toggleButton.classList.toggle('active');
+    blinder.classList.toggle('active');
+  }
+
+  toggleButton.addEventListener('click', function (event) {
+    event.stopPropagation(); // Prevents the click event from reaching the document click handler
+    toggleMenu();
+  });
+
+  document.addEventListener('click', function (event) {
+    if (!menu.contains(event.target) && event.target !== toggleButton) {
+      menu.classList.remove('show');
+      toggleButton.classList.remove('active');
+      blinder.classList.remove('active');
+    }
+  });
+
+  var links = document.querySelectorAll('.navbar a');
+  links.forEach(function (link) {
+    link.addEventListener('click', function () {
+      menu.classList.remove('show');
+      toggleButton.classList.remove('active');
+      blinder.classList.remove('active');
+    });
+  });
+});
+
+// DYNAMIC TEXT WRITING
+var _CONTENT = [ 
+	"Software Developer.", 
+	"Student from Madeira Island.",
+    "Passionate About Technology.",
+    "I Love Chess."
+];
+
+var _PART = 0;
+var _PART_INDEX = 0;
+var _INTERVAL_VAL;
+var _ELEMENT = document.querySelector("#text");
+
+function Type() { 
+	var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
+	_ELEMENT.innerHTML = text;
+	_PART_INDEX++;
+
+	if(text === _CONTENT[_PART]) {
+		clearInterval(_INTERVAL_VAL);
+		setTimeout(function() {
+			_INTERVAL_VAL = setInterval(Delete, 50);
+		}, 1000);
+	}
+}
+
+function Delete() {
+	var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
+	_ELEMENT.innerHTML = text;
+	_PART_INDEX--;
+
+	if(text === '') {
+		clearInterval(_INTERVAL_VAL);
+		if(_PART == (_CONTENT.length - 1))
+			_PART = 0;
+		else
+			_PART++;
+		
+		_PART_INDEX = 0;
+		setTimeout(function() {
+			_INTERVAL_VAL = setInterval(Type, 100);
+		}, 200);
+	}
+}
+_INTERVAL_VAL = setInterval(Type, 100);
+
+
+window.addEventListener('scroll', function() {
+  var headerBottom = document.querySelector('.header').getBoundingClientRect().bottom;
+  var content = [".home-", ".about-",".education-", ".portfolio-", ".contact-", ".skills-"];
+  for (var j = 0; j<content.length; j++){
+      var divContent = document.querySelector(content[j] + "content");
+      var sectionElements = divContent.children;
+
+      for (var i = 0; i < sectionElements.length; i++) {
+          var elem = sectionElements[i];
+          var elemTop = elem.getBoundingClientRect().top;
+          var distance = elemTop - headerBottom;
+
+          if (distance <= 0) {
+              elem.style.opacity = 0;
+          } 
+          else if (distance < 10) {
+              // Calculate opacity based on element's position relative to the header
+              var opacity = (distance / 10);
+              elem.style.opacity = opacity;
+          }
+          else{
+              elem.style.opacity = 1;
+          }
+      }
+  }
+});
+
 // Particles by Vincent Garreau
 var pJS = function(tag_id, params){
 
@@ -1655,108 +1764,3 @@ particlesJS('particles-js',
   }
 
 );
-
-document.addEventListener('DOMContentLoaded', function () {
-  var menu = document.querySelector('.navbar');
-  var toggleButton = document.querySelector('button.toggle-menu');
-
-  function toggleMenu() {
-    menu.classList.toggle('show');
-    toggleButton.classList.toggle('active');
-  }
-
-  toggleButton.addEventListener('click', function (event) {
-    event.stopPropagation(); // Prevents the click event from reaching the document click handler
-    toggleMenu();
-  });
-
-  document.addEventListener('click', function (event) {
-    if (!menu.contains(event.target) && event.target !== toggleButton) {
-      menu.classList.remove('show');
-      toggleButton.classList.remove('active');
-    }
-  });
-
-  var links = document.querySelectorAll('.navbar a');
-  links.forEach(function (link) {
-    link.addEventListener('click', function () {
-      menu.classList.remove('show');
-      toggleButton.classList.remove('active');
-    });
-  });
-});
-
-// DYNAMIC TEXT WRITING
-var _CONTENT = [ 
-	"Software Developer.", 
-	"Student from Madeira Island.",
-    "Passionate About Technology.",
-    "I Love Chess."
-];
-
-var _PART = 0;
-var _PART_INDEX = 0;
-var _INTERVAL_VAL;
-var _ELEMENT = document.querySelector("#text");
-
-function Type() { 
-	var text =  _CONTENT[_PART].substring(0, _PART_INDEX + 1);
-	_ELEMENT.innerHTML = text;
-	_PART_INDEX++;
-
-	if(text === _CONTENT[_PART]) {
-		clearInterval(_INTERVAL_VAL);
-		setTimeout(function() {
-			_INTERVAL_VAL = setInterval(Delete, 50);
-		}, 1000);
-	}
-}
-
-function Delete() {
-	var text =  _CONTENT[_PART].substring(0, _PART_INDEX - 1);
-	_ELEMENT.innerHTML = text;
-	_PART_INDEX--;
-
-	if(text === '') {
-		clearInterval(_INTERVAL_VAL);
-		if(_PART == (_CONTENT.length - 1))
-			_PART = 0;
-		else
-			_PART++;
-		
-		_PART_INDEX = 0;
-		setTimeout(function() {
-			_INTERVAL_VAL = setInterval(Type, 100);
-		}, 200);
-	}
-}
-_INTERVAL_VAL = setInterval(Type, 100);
-
-
-window.addEventListener('scroll', function() {
-  var headerBottom = document.querySelector('.header').getBoundingClientRect().bottom;
-  var content = [".home-", ".about-",".education-", ".portfolio-", ".contact-", ".skills-"];
-  for (var j = 0; j<content.length; j++){
-      var divContent = document.querySelector(content[j] + "content");
-      console.log(content[j] + "content");
-      var sectionElements = divContent.children;
-
-      for (var i = 0; i < sectionElements.length; i++) {
-          var elem = sectionElements[i];
-          var elemTop = elem.getBoundingClientRect().top;
-          var distance = elemTop - headerBottom;
-
-          if (distance <= 0) {
-              elem.style.opacity = 0;
-          } 
-          else if (distance < 75) {
-              // Calculate opacity based on element's position relative to the header
-              var opacity = (distance / 75);
-              elem.style.opacity = opacity;
-          }
-          else{
-              elem.style.opacity = 1;
-          }
-      }
-  }
-});

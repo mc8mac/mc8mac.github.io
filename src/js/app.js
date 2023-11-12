@@ -1656,24 +1656,34 @@ particlesJS('particles-js',
 
 );
 
-function toggleMenu() {
-  var menu = document.querySelector('.navbar');
-  var btn = document.querySelector('button.toggle-menu');
-  var btn1 = document.querySelector('button.untoggle-menu');
-  menu.classList.toggle('show');
-  btn.classList.toggle('active');
-  btn1.classList.toggle('active');
-}
-
 document.addEventListener('DOMContentLoaded', function () {
+  var menu = document.querySelector('.navbar');
   var toggleButton = document.querySelector('button.toggle-menu');
-  var untoggleButton = document.querySelector('button.untoggle-menu');
-  if (toggleButton) {
-    toggleButton.addEventListener('click', toggleMenu);
+
+  function toggleMenu() {
+    menu.classList.toggle('show');
+    toggleButton.classList.toggle('active');
   }
-  if (untoggleButton) {
-    untoggleButton.addEventListener('click', toggleMenu);
-  }
+
+  toggleButton.addEventListener('click', function (event) {
+    event.stopPropagation(); // Prevents the click event from reaching the document click handler
+    toggleMenu();
+  });
+
+  document.addEventListener('click', function (event) {
+    if (!menu.contains(event.target) && event.target !== toggleButton) {
+      menu.classList.remove('show');
+      toggleButton.classList.remove('active');
+    }
+  });
+
+  var links = document.querySelectorAll('.navbar a');
+  links.forEach(function (link) {
+    link.addEventListener('click', function () {
+      menu.classList.remove('show');
+      toggleButton.classList.remove('active');
+    });
+  });
 });
 
 // DYNAMIC TEXT WRITING

@@ -215,6 +215,20 @@ section{
     height: 5rem;
 }
 
+.btn-box .btn:nth-child(2){
+    background:transparent;
+    color: var(--main-color);
+}
+
+.btn-box .btn:nth-child(2)::before{
+    background: var(--main-color);
+}
+
+.btn-box .btn:nth-child(2):hover{
+    color: var(--bg-color)
+    
+}
+
 .btn-box .btn {
     position: relative;
     display: inline-flex;
@@ -238,24 +252,6 @@ section{
 .btn-box .btn:hover{
     color: var(--main-color);
     background: transparent;
-
-}
-
-.btn-box .btn:nth-child(2){
-    background:transparent;
-    color: var(--main-color);
-}
-
-.btn-box .btn:nth-child(2)::before{
-    background: var(--main-color);
-}
-.btn-box .btn:nth-child(1)::before{
-    background: transparent;
-}
-
-.btn-box .btn:nth-child(2):hover{
-    color: var(--bg-color)
-    
 }
 
 .btn-box .btn::before{
@@ -403,11 +399,6 @@ section{
 .btns{
     display: inline-block;
     width: 50rem;
-}
-
-
-.btn-box.btns a::before{
-    background: var(--second-bg-color);
 }
 
 @media only screen and (max-width: 700px) {

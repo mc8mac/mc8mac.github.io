@@ -1496,9 +1496,6 @@ var pJS = function(tag_id, params){
 
 
 };
-
-/* ---------- global functions - vendors ------------ */
-
 Object.deepExtend = function(destination, source) {
   for (var property in source) {
     if (source[property] && source[property].constructor &&
@@ -1511,7 +1508,6 @@ Object.deepExtend = function(destination, source) {
   }
   return destination;
 };
-
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame ||
     window.webkitRequestAnimationFrame ||
@@ -1522,7 +1518,6 @@ window.requestAnimFrame = (function(){
       window.setTimeout(callback, 1000 / 60);
     };
 })();
-
 window.cancelRequestAnimFrame = ( function() {
   return window.cancelAnimationFrame         ||
     window.webkitCancelRequestAnimationFrame ||
@@ -1531,7 +1526,6 @@ window.cancelRequestAnimFrame = ( function() {
     window.msCancelRequestAnimationFrame     ||
     clearTimeout
 } )();
-
 function hexToRgb(hex){
   // By Tim Down - http://stackoverflow.com/a/5624139/3493650
   // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -1546,20 +1540,13 @@ function hexToRgb(hex){
       b: parseInt(result[3], 16)
   } : null;
 };
-
 function clamp(number, min, max) {
   return Math.min(Math.max(number, min), max);
 };
-
 function isInArray(value, array) {
   return array.indexOf(value) > -1;
 }
-
-
-/* ---------- particles.js functions - start ------------ */
-
 window.pJSDom = [];
-
 window.particlesJS = function(tag_id, params){
 
   //console.log(params);
@@ -1604,7 +1591,6 @@ window.particlesJS = function(tag_id, params){
   }
 
 };
-
 window.particlesJS.load = function(tag_id, path_config_json, callback){
 
   /* load json config */
@@ -1625,7 +1611,6 @@ window.particlesJS.load = function(tag_id, path_config_json, callback){
   xhr.send();
 
 };
-
 particlesJS('particles-js',
 
 {

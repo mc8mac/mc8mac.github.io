@@ -35,10 +35,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // DYNAMIC TEXT WRITING
 var _CONTENT = [ 
-	"Software Developer.", 
-	"Student from Madeira Island.",
-    "Passionate About Technology.",
-    "I Love Chess."
+	"Developer.", 
+	"Student.",
+  "Engineer.",
 ];
 
 var _PART = 0;
@@ -81,30 +80,16 @@ _INTERVAL_VAL = setInterval(Type, 100);
 
 
 window.addEventListener('scroll', function() {
-  var headerBottom = document.querySelector('.header').getBoundingClientRect().bottom;
-  var content = [".home-", ".about-",".education-", ".portfolio-", ".contact-", ".skills-"];
-  for (var j = 0; j<content.length; j++){
-      var divContent = document.querySelector(content[j] + "content");
-      var sectionElements = divContent.children;
+    var header = document.querySelector('.header');
+    var scrollPosition = document.documentElement.scrollTop;
+    var pageHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrollPercentage = (scrollPosition / pageHeight) * 100;
 
-      for (var i = 0; i < sectionElements.length; i++) {
-          var elem = sectionElements[i];
-          var elemTop = elem.getBoundingClientRect().top;
-          var distance = elemTop - headerBottom;
-
-          if (distance <= 0) {
-              elem.style.opacity = 0;
-          } 
-          else if (distance < 10) {
-              // Calculate opacity based on element's position relative to the header
-              var opacity = (distance / 10);
-              elem.style.opacity = opacity;
-          }
-          else{
-              elem.style.opacity = 1;
-          }
-      }
-  }
+    if (scrollPercentage > 1) {
+        header.classList.add('active');
+    } else {
+        header.classList.remove('active');
+    }
 });
 
 // Particles by Vincent Garreau

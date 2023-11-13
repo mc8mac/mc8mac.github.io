@@ -49,7 +49,7 @@ body{
 
 .header.active{
     background: var(--bg-color);
-    box-shadow: black 0px 0px 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 40px;
 }
 
 
@@ -312,13 +312,18 @@ section{
 }
 
 .about{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 40px;
     gap: 2rem;
-    background: var(--second-bg-color);
+    backdrop-filter: blur(15px);
+    border-radius: 50px;
     padding-bottom: 6rem;
+    width: 80%;
+    left: 10%;
 }
 
 .heading{
@@ -384,6 +389,29 @@ section{
 }
 
 .about-content p{
-    font-size: 1.6rem;
-    margin: 2rem 0 4rem;
+    font-size: 2rem;
+    margin: 2rem 0 3rem;
+}
+
+.btns{
+    display: inline-block;
+    width: 50rem;
+}
+
+
+.btn-box.btns a::before{
+    background: var(--second-bg-color);
+}
+
+@media only screen and (max-width: 700px) {
+    .about-content h3{
+        font-size: 3.6rem;
+        color: transparent;
+        -webkit-text-stroke: var(--main-color) 1px;
+    }
+    
+    .about-content p{
+        font-size: 2rem;
+        margin: 2rem 20% 3rem;
+    }
 }

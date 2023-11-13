@@ -249,9 +249,13 @@ section{
 .btn-box .btn:nth-child(2)::before{
     background: var(--main-color);
 }
+.btn-box .btn:nth-child(1)::before{
+    background: transparent;
+}
 
 .btn-box .btn:nth-child(2):hover{
     color: var(--bg-color)
+    
 }
 
 .btn-box .btn::before{
@@ -268,7 +272,6 @@ section{
 
 .btn-box .btn:hover::before{
     width: 100%;
-    background: transparent;
 }
 
 .home-social{

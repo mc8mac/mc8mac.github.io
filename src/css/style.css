@@ -562,7 +562,7 @@ time {
     }
 
     .timeline ul li div {
-        width: calc(100vw - 91px);
+        width: calc(85vw - 91px);
     }
 
     .timeline ul li:nth-child(even) div {

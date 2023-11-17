@@ -14,7 +14,17 @@
     --second-bg-color: #232428;
     --text-color: #ededed;
     --main-color: #ff568c;
+    --color-text: navy;
+    --color-bg: papayawhip;
+    --color-bg-accent: #ecdcc0;
+    --size: clamp(10rem, 1rem + 40vmin, 30rem);
+    --gap: calc(var(--size) / 14);
+    --duration: 60s;
+    --scroll-start: 0;
+    --scroll-end: calc(-100% - var(--gap));
 }
+
+
 
 html {
     font-size: 62.5%;
@@ -423,7 +433,7 @@ section {
     padding: 50px 0;
 }
 
-.timeline ul li{
+.timeline ul li {
     list-style-type: none;
     position: relative;
     width: 6px;
@@ -445,6 +455,7 @@ section {
     z-index: 1;
     color: var(--bg-color)
 }
+
 .timeline ul li div {
     position: relative;
     bottom: 0;
@@ -457,11 +468,11 @@ section {
     align-items: flex-start;
 }
 
-.timeline ul li div img{
+.timeline ul li div img {
     width: 45px;
 }
 
-time {
+.timeline ul li div h1 {
     font-size: 2.3rem;
     font-weight: bold;
     margin-bottom: 8px;
@@ -470,8 +481,8 @@ time {
     text-align: left;
 }
 
-.timeline ul li p{
-    font-size: 1.5rem;
+.timeline ul li p {
+    font-size: 2rem;
     font-weight: 500;
     line-height: 1.6;
     color: var(--bg-color);
@@ -480,9 +491,10 @@ time {
     text-align: left;
 }
 
-.timeline ul li div{
+.timeline ul li div {
     left: 45px;
 }
+
 .timeline ul li:nth-child(odd) div {
     left: 45px;
 }
@@ -594,14 +606,15 @@ time {
 
 @keyframes timestamp {
     0% {
-        transform: scale(0.1,0);
+        transform: scale(0.1, 0);
     }
-    50%{
-        transform: scale(0.1,1);
+
+    50% {
+        transform: scale(0.1, 1);
     }
-    100%{
-        transform: scale(1,1);
+
+    100% {
+        transform: scale(1, 1);
     }
 }
-    
 
